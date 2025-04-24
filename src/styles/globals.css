@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Inter font from Google Fonts as a fallback */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Import Circular Std Font */
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/fonts/CircularStd-Book.woff2') format('woff2'),
+       url('/fonts/CircularStd-Book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/fonts/CircularStd-Medium.woff2') format('woff2'),
+       url('/fonts/CircularStd-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/fonts/CircularStd-Bold.woff2') format('woff2'),
+       url('/fonts/CircularStd-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.circular-std {
+  font-family: 'Circular Std', 'Inter', sans-serif;
+}
+
+.mask-stripes {
+  -webkit-mask-image: url('https://i.imgur.com/xYBtnf5.png');
+  -webkit-mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url('https://i.imgur.com/xYBtnf5.png');
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
