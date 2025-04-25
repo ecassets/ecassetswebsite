@@ -1,281 +1,288 @@
 import React from "react";
-import {
-  ArrowRight,
-  Star,
-  MessageSquare,
-  Users,
-  Bed,
-  Clock,
-  ChevronRight,
-  MapPin,
-  Compass,
-  Wine,
-  Utensils,
-  Ship,
-  Calendar,
-  Award,
-  Shield,
-  Coffee,
-  Anchor,
-  ChevronDown,
-} from "lucide-react";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import ClassicalNavigation from "@/components/ClassicalNavigation";
-import Footer from "@/components/Footer";
+import Head from "next/head";
+import styles from "../styles/classical.module.css";
 
-const ClassicalInvestments = () => {
-  // Structured data for rich snippets
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "EC Assets",
-    description: "Leading global investment business and a committed partner.",
-    url: "https://ecassets.com",
-    logo: "https://ecassets.com/logo.png",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "London",
-      addressCountry: "UK",
-    },
-  };
-
-  // Featured news articles
-  const newsItems = [
-    {
-      title: "EC Assets to list $250 million Tech SPAC in New York",
-      description:
-        "EC Assets wants to list a SPAC focused on European tech companies on NASDAQ. The strategic goal is to complete a billion-dollar acquisition within 18 months and form a European tech champion.",
-      date: "FEBRUARY 27, 2021",
-      slug: "ec-assets-to-list-tech-spac-in-new-york",
-    },
-    {
-      title: "EC Assets develops 61.500 sqm commercial property",
-      description:
-        "EC Assets announces the start of the development of a commercial property with approx. 61.500 spm. space right in the centre of the economical powerhouse of Germany.",
-      date: "DECEMBER 22, 2020",
-      slug: "ec-assets-develops-61-500-sqm-commercial-property",
-    },
-    {
-      title: "A sector EC Assets invests in: WorkTech",
-      description:
-        "This today's FT article couldn't describe it any better - the digitization and automation of all corporate processes not only makes the daily work of a CFO easier. Rather, it is a development that can no longer be stopped.",
-      date: "DECEMBER 12, 2020",
-      slug: "a-sector-ec-assets-invests-in-worktech",
-    },
-  ];
-
+export default function Classical() {
   return (
     <>
       <Head>
-        <title>EC Assets | Classical Investments</title>
-        <meta
-          name="description"
-          content="Established 1994, we are a leading global investment business and a committed partner focused on real estate and private equity."
-        />
-        <meta
-          name="keywords"
-          content="investments, real estate, private equity, global investment"
-        />
-
-        {/* Open Graph tags */}
-        <meta property="og:title" content="EC Assets | Classical Investments" />
-        <meta
-          property="og:description"
-          content="Established 1994, we are a leading global investment business and a committed partner focused on real estate and private equity."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ecassets.com/classical" />
-        <meta property="og:image" content="https://ecassets.com/og-image.jpg" />
-
-        {/* Structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <title>EC Assets - Classical</title>
+        <meta name="description" content="EC Assets - Classical investments" />
       </Head>
 
-      <div className="min-h-screen bg-white text-gray-900">
-        <ClassicalNavigation />
+      <div className={styles.pageContainer}>
+        {/* Header */}
+        <header className={styles.header}>
+          <Link href="/" className={styles.logo}>
+            ec assets
+          </Link>
+          <nav className={styles.mainNav}>
+            <Link href="/investments" className={styles.navItem}>
+              INVESTMENTS
+            </Link>
+            <Link href="/team" className={styles.navItem}>
+              TEAM
+            </Link>
+            <Link href="/news" className={styles.navItem}>
+              NEWS
+            </Link>
+            <Link href="/contact" className={styles.navItem}>
+              CONTACT
+            </Link>
+          </nav>
+        </header>
 
         {/* Hero Section */}
-        <section className="relative w-full">
-          <div className="relative h-screen">
-            <Image
-              src="/photos/homepage/Hero.jpg"
-              alt="London skyline with Tower Bridge"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/30"></div>
-            <div className="absolute inset-0 flex items-center">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto text-center">
-                  <h1 className="text-5xl md:text-7xl font-light text-white mb-8">
-                    Investing is our business
-                  </h1>
-                  <div className="mt-8">
-                    <Link
-                      href="/investments"
-                      className="inline-block bg-[#8B0000] text-white px-8 py-3 text-sm uppercase tracking-wider"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* What we believe in Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="uppercase text-[#8B0000] text-sm tracking-wider mb-6 circular-std font-medium">
-                WHAT WE BELIEVE IN
-              </h2>
-              <p className="text-4xl font-light mb-10 circular-std">
-                Established 1994, we are a leading global investment business
-                and a committed partner.
-              </p>
-              <p className="text-4xl font-light circular-std">
-                Our mission is to invest in great assets and exciting companies
-                to create long-term value.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <hr className="border-t border-gray-200" />
-
-        {/* Real Estate Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              <div>
-                <h3 className="uppercase text-[#8B0000] text-sm tracking-wider mb-6">
-                  OUR INVESTMENTS
-                </h3>
-                <h2 className="text-5xl font-light mb-8">Real Estate</h2>
-                <p className="text-gray-600 mb-8">
-                  As a global real estate investor, we are seeking long-term and
-                  secure income in prime locations. We invest in high-quality
-                  assets, focusing where we see outsized growth potential driven
-                  by global economic, demographic trend and sustainability.
-                </p>
-                <Link
-                  href="/investments/real-estate"
-                  className="inline-block bg-gray-800 text-white px-8 py-3 text-sm uppercase tracking-wider"
-                >
-                  Learn more
-                </Link>
-              </div>
-              <div className="relative h-[400px] md:h-[500px]">
-                <Image
-                  src="/photos/homepage/RealEstate.jpg"
-                  alt="Premium real estate"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr className="border-t border-gray-200" />
-
-        {/* Private Equity Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              <div className="relative h-[400px] order-last md:order-first">
-                <Image
-                  src="/photos/homepage/PrivateEquity.png"
-                  alt="Private Equity"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="uppercase text-[#8B0000] text-sm tracking-wider mb-6">
-                  OUR INVESTMENTS
-                </h3>
-                <h2 className="text-5xl font-light mb-8">Private Equity</h2>
-                <p className="text-gray-600 mb-8">
-                  We are an equity investor seeking investments in founders with
-                  greatest visions, in applications that are truly
-                  mind-changing, in products that are really enabling to all of
-                  us, and companies that are not only honestly thinking but
-                  sustainably acting.
-                </p>
-                <Link
-                  href="/investments/private-equity"
-                  className="inline-block bg-gray-800 text-white px-8 py-3 text-sm uppercase tracking-wider"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr className="border-t border-gray-200" />
-
-        {/* News Articles Section - Simplified */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {newsItems.map((news, index) => (
-                <Link key={index} href={`/post/${news.slug}`} className="block">
-                  <div className="bg-white p-8 h-full hover:shadow-md transition-shadow">
-                    <p className="text-gray-500 text-sm mb-3">{news.date}</p>
-                    <h3 className="text-2xl font-light mb-4">{news.title}</h3>
-                    <div className="w-full h-px bg-gray-200 my-4"></div>
-                    <p className="text-gray-600 mb-4">{news.description}</p>
-                    <div className="text-[#8B0000] hover:underline inline-flex items-center mt-2">
-                      Read more <ArrowRight size={16} className="ml-1" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="text-center mt-12">
-              <Link
-                href="/news"
-                className="inline-block bg-gray-900 text-white hover:bg-gray-800 px-8 py-3 text-sm uppercase tracking-wider transition-colors"
-              >
-                View All News
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact CTA Section */}
-        <section className="py-20 bg-gray-100">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-light mb-6">
-              Investing is our business.
-            </h2>
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-              Let us tell you more about our assets and investments. Why not
-              achieving more together? Please contact us today!
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-gray-800 text-white px-8 py-3 text-sm uppercase tracking-wider"
-            >
-              Contact Us
+        <section className={styles.hero}>
+          <Image
+            src="/photos/homepage/Hero.jpg"
+            alt="Hero"
+            fill
+            priority
+            className={styles.fullWidthImage}
+          />
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroText}>Investing is our business.</h1>
+            <Link href="/investments" className={styles.heroButton}>
+              Learn More
             </Link>
           </div>
         </section>
 
-        <Footer />
+        {/* Mission Statement */}
+        <section className={styles.missionSection}>
+          <div className={styles.missionLabel}>WHAT WE BELIEVE IN</div>
+          <h2 className={styles.missionText}>
+            Established 1994, we are a leading
+            <br />
+            global investment business and a
+            <br />
+            committed partner.
+          </h2>
+          <p className={`${styles.missionText} ${styles.missionParagraph}`}>
+            Our mission is to invest in great
+            <br />
+            assets and exciting companies
+            <br />
+            to create long-term value.
+          </p>
+        </section>
+
+        <div className={styles.sectionDivider}></div>
+
+        {/* Real Estate Section */}
+        <section className={styles.investmentSection}>
+          <div className={styles.investmentContent}>
+            <div className={styles.investmentLabel}>OUR INVESTMENTS</div>
+            <h2 className={styles.investmentTitle}>Real Estate</h2>
+            <p className={styles.investmentText}>
+              As a global real estate investor, we are seeking long-term and
+              secure income in prime locations. We invest in high-quality
+              assets, focusing where we see outsized growth potential driven by
+              global economic, demographic trend and sustainability.
+            </p>
+            <Link href="/investments" className={styles.investmentButton}>
+              LEARN MORE
+            </Link>
+          </div>
+          <div className={styles.investmentImage}>
+            <Image
+              src="/photos/homepage/RealEstate.jpg"
+              alt="Real Estate"
+              fill
+              className={styles.fullWidthImage}
+              priority
+            />
+          </div>
+        </section>
+
+        <div className={styles.sectionDivider}></div>
+
+        {/* Private Equity Section */}
+        <section className={styles.investmentSection}>
+          <div className={styles.investmentImage}>
+            <Image
+              src="/photos/homepage/PrivateEquity.png"
+              alt="Private Equity"
+              fill
+              className={styles.fullWidthImage}
+              priority
+            />
+          </div>
+          <div className={styles.investmentContent}>
+            <div className={styles.investmentLabel}>OUR INVESTMENTS</div>
+            <h2 className={styles.investmentTitle}>Private Equity</h2>
+            <p className={styles.investmentText}>
+              We are an equity investor seeking investments in founders with
+              greatest visions, in applications that are truly mind-changing, in
+              products that are really enabling to all of us, and companies that
+              are not only honestly thinking but sustainably acting.
+            </p>
+            <Link href="/investments" className={styles.investmentButton}>
+              LEARN MORE
+            </Link>
+          </div>
+        </section>
+
+        <div className={styles.sectionDivider}></div>
+
+        {/* News Section */}
+        <section className={styles.newsSection}>
+          <div className={styles.newsHeading}>NEWS</div>
+          <h2 className={styles.newsTitle}>Company News</h2>
+
+          <div className={styles.newsGrid}>
+            <Link
+              href="/post/ec-assets-to-list-tech-spac-in-new-york"
+              className={styles.newsCard}
+            >
+              <h3 className={styles.newsCardTitle}>
+                EC Assets to list $250 million Tech SPAC in New York
+              </h3>
+              <hr className={styles.newsCardDivider} />
+              <p className={styles.newsCardContent}>
+                EC Assets wants to list a SPAC focused on European tech
+                companies on NASDAQ. The strategic goal is to complete a
+                billion-dollar acquisition within 18 months and form a European
+                tech champion.
+              </p>
+            </Link>
+
+            <Link
+              href="/post/ec-assets-develops-property"
+              className={styles.newsCard}
+            >
+              <h3 className={styles.newsCardTitle}>
+                EC Assets develops 61.500 sqm commercial property
+              </h3>
+              <hr className={styles.newsCardDivider} />
+              <p className={styles.newsCardContent}>
+                EC Assets announces the start of the development of a commercial
+                property with approx. 61.500 spm. space right in the centre of
+                the economical powerhouse of Germany.
+              </p>
+            </Link>
+
+            <Link
+              href="/post/a-sector-ec-assets-invests-in-worktech"
+              className={styles.newsCard}
+            >
+              <h3 className={styles.newsCardTitle}>
+                A sector EC Assets invests in: WorkTech
+              </h3>
+              <hr className={styles.newsCardDivider} />
+              <p className={styles.newsCardContent}>
+                This today&apos;s FT article couldn&apos;t describe it any
+                better - the digitization and automation of all corporate
+                processes not only makes the daily work of a CFO easier. Rather,
+                it is a development that can no longer be stopped.
+              </p>
+            </Link>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className={styles.contactSection}>
+          <h2 className={styles.contactTitle}>Investing is our business.</h2>
+          <p className={styles.contactText}>
+            Let us tell you more about our assets and investments. Why not
+            achieving more together?
+            <br />
+            Please contact us today!
+          </p>
+          <Link href="/contact" className={styles.contactButton}>
+            Contact us
+          </Link>
+        </section>
+
+        {/* Footer */}
+        <footer className={styles.footer}>
+          <div className={styles.footerRow}>
+            <div className={styles.footerColumn}>
+              <div className={styles.footerLogo}>ec assets</div>
+              <p className={styles.footerText}>Investing is our business.</p>
+            </div>
+
+            <div className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Navigation</h3>
+              <Link href="/investments" className={styles.footerLink}>
+                Investments
+              </Link>
+              <Link href="/team" className={styles.footerLink}>
+                Team
+              </Link>
+              <Link href="/news" className={styles.footerLink}>
+                News
+              </Link>
+              <Link href="/contact" className={styles.footerLink}>
+                Contact
+              </Link>
+            </div>
+
+            <div className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Contact</h3>
+              <a
+                href="mailto:office@ecassets.com"
+                className={styles.footerLink}
+              >
+                office@ecassets.com
+              </a>
+              <a href="tel:+442087980342" className={styles.footerLink}>
+                +44 20 8798 0342
+              </a>
+              <div className={styles.footerAddress}>
+                13 Savile Row
+                <br />
+                London W1S 3PH
+                <br />
+                United Kingdom
+              </div>
+              <div className={styles.socialLinks}>
+                <a
+                  href="https://www.linkedin.com/company/ecassets"
+                  target="_blank"
+                  className={styles.socialLink}
+                >
+                  <img
+                    src="/images/LinkedIN_black.svg"
+                    width="24"
+                    height="24"
+                    alt="LinkedIn"
+                  />
+                </a>
+                <a
+                  href="https://twitter.com/ecassets"
+                  target="_blank"
+                  className={styles.socialLink}
+                >
+                  <img
+                    src="/images/Twitter_black.svg"
+                    width="24"
+                    height="24"
+                    alt="Twitter"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.footerBottom}>
+            <div>© Copyright {new Date().getFullYear()} by ec assets</div>
+            <div>
+              <Link href="/legals" className={styles.footerBottomLink}>
+                Legals
+              </Link>{" "}
+              |
+              <Link href="/data-policy" className={styles.footerBottomLink}>
+                Data Policy
+              </Link>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
-};
-
-export default ClassicalInvestments;
+}

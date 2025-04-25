@@ -1,0 +1,430 @@
+/* Classical page specific styles */
+
+/* Global layout */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 40px;
+}
+
+/* Header & Navigation */
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 100;
+  border-bottom: 1px solid #e4e4e4;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #8B0000;
+  font-size: 32px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: "Times New Roman", serif;
+}
+
+.mainNav {
+  display: flex;
+  gap: 30px;
+}
+
+.navItem {
+  text-transform: uppercase;
+  color: #757575;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.navItem:hover {
+  opacity: 1;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  margin-top: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.heroContent {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 2;
+}
+
+.heroText {
+  font-size: 68px;
+  line-height: 80px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.heroButton {
+  background-color: #8B1E20;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border: 0;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 340px;
+}
+
+.heroButton:hover {
+  background-color: transparent;
+  border-color: white;
+}
+
+/* Investment sections */
+.investmentSection {
+  position: relative;
+  display: flex;
+  min-height: 400px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.investmentContent {
+  width: 45%;
+  padding: 0 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.investmentLabel {
+  color: #8B1E20;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.investmentTitle {
+  font-size: 50px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  color: #333;
+}
+
+.investmentText {
+  color: rgba(0,0,0,0.6);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-size: 18px;
+  max-width: 100%;
+}
+
+.investmentButton {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: none;
+  width: fit-content;
+}
+
+.investmentButton:hover {
+  background-color: #555;
+}
+
+.investmentImage {
+  width: 55%;
+  position: relative;
+  overflow: hidden;
+  max-height: 400px;
+}
+
+.sectionDivider {
+  width: 90%;
+  margin: 60px auto;
+  height: 1px;
+  background-color: #e4e4e4;
+}
+
+/* Dividers */
+.divider {
+  height: 1px;
+  background-color: #e4e4e4;
+  width: 100%;
+  margin: 0;
+  border: none;
+}
+
+/* Footer */
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 80px 30px 30px;
+  margin-top: auto;
+}
+
+.footerRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+
+.footerColumn {
+  width: 33%;
+}
+
+.footerLogo {
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.footerText {
+  opacity: 0.7;
+}
+
+.footerHeading {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.footerLink {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: white;
+}
+
+.footerAddress {
+  color: rgba(255, 255, 255, 0.7);
+  cursor: default;
+  line-height: 1.6;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.socialLink {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: white;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  font-size: 13px;
+  color: #a7a7a7;
+}
+
+.footerBottomLink {
+  color: #a7a7a7;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+.footerBottomLink:hover {
+  color: white;
+}
+
+/* Hero image placement */
+.fullWidthImage {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contact section */
+.contactSection {
+  text-align: center;
+  padding: 80px 30px;
+}
+
+.contactTitle {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.contactText {
+  color: rgba(0,0,0,0.6);
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+/* Mission section */
+.missionSection {
+  text-align: center;
+  padding: 120px 30px;
+  border-top: 1px solid #e4e4e4;
+}
+
+.missionLabel {
+  color: #8B1E20;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  display: inline-block;
+  padding: 0;
+  background-color: transparent;
+}
+
+.missionText {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #333;
+}
+
+/* Mission section specific paragraph styling */
+.missionParagraph {
+  margin-top: 70px;
+  margin-bottom: 100px;
+  font-size: 32px;
+}
+
+/* News section */
+.newsSection {
+  background-color: #f9f9f9;
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.newsHeading {
+  color: #8B1E20;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.newsTitle {
+  font-size: 45px;
+  font-weight: 300;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.newsGrid {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.newsCard {
+  background-color: white;
+  width: calc(33.33% - 20px);
+  padding: 30px;
+  text-align: left;
+  border: 1px solid #eee;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.newsCard:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.newsCardTitle {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  color: #333;
+}
+
+.newsCardContent {
+  color: rgba(0,0,0,0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+.newsCardDivider {
+  height: 1px;
+  background-color: #e4e4e4;
+  width: 100%;
+  margin: 20px 0;
+  border: none;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.noItems {
+  color: rgba(0,0,0,0.6);
+  font-style: italic;
+  margin: 40px 0;
+} 

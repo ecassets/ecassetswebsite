@@ -19,72 +19,50 @@ const ClassicalNavigation = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { text: "INVESTMENTS", url: "/investments" },
-    { text: "TEAM", url: "/team" },
-    { text: "NEWS", url: "/news" },
-    { text: "CONTACT", url: "/contact" },
+    { text: "investments", url: "/investments" },
+    { text: "team", url: "/team" },
+    { text: "News", url: "/news" },
+    { text: "Contact", url: "/contact" },
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
-              <div className="text-[#8B0000] text-4xl font-bold">ec assets</div>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
-            <div className="flex items-center gap-12">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.url}
-                  className="text-sm tracking-wider text-gray-500 hover:text-gray-900"
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+    <div className="navigation w-nav">
+      <div className="div-block-9">
+        <div className="navigation-wrap">
+          <Link href="/" className="logo-link w-nav-brand">
+            <div className="text-[#8B0000] text-4xl font-bold">ec assets</div>
+          </Link>
+          <div className="menu">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+              className="menu-button w-nav-button"
             >
               {isMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="menu-icon" width="22" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="menu-icon" width="22" />
               )}
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50">
-            <div className="px-4 py-3 space-y-1">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.url}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block py-2 px-3 text-base text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        <nav
+          role="navigation"
+          className={`navigation-items w-nav-menu ${
+            isMenuOpen ? "block" : "hidden md:block"
+          }`}
+        >
+          {navLinks.map((link, index) => (
+            <Link
+              key={index}
+              href={link.url}
+              className="navigation-item w-nav-link"
+            >
+              {link.text}
+            </Link>
+          ))}
+        </nav>
       </div>
-    </nav>
+    </div>
   );
 };
 
