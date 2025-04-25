@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/classical.module.css";
 
 export default function Classical() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Head>
         <title>EC Assets - Classical</title>
         <meta name="description" content="EC Assets - Classical investments" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <div className={styles.pageContainer}>
@@ -32,7 +39,54 @@ export default function Classical() {
               CONTACT
             </Link>
           </nav>
+          <button
+            className={styles.mobileMenuButton}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <img
+              src="/images/burger.svg"
+              alt="Menu"
+              className={styles.mobileMenuIcon}
+            />
+          </button>
         </header>
+
+        {/* Mobile Navigation */}
+        <nav
+          className={`${styles.mobileNav} ${
+            mobileMenuOpen ? styles.mobileNavActive : ""
+          }`}
+        >
+          <Link
+            href="/investments"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            INVESTMENTS
+          </Link>
+          <Link
+            href="/team"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            TEAM
+          </Link>
+          <Link
+            href="/news"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            NEWS
+          </Link>
+          <Link
+            href="/contact"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            CONTACT
+          </Link>
+        </nav>
 
         {/* Hero Section */}
         <section className={styles.hero}>

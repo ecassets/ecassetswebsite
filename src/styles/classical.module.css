@@ -427,4 +427,204 @@
   color: rgba(0,0,0,0.6);
   font-style: italic;
   margin: 40px 0;
+}
+
+/* Mobile Menu */
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobileMenuIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.mobileNav {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-direction: column;
+  z-index: 99;
+}
+
+.mobileNavActive {
+  display: flex;
+}
+
+.mobileNavItem {
+  text-transform: uppercase;
+  color: #757575;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  padding: 15px 0;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.mobileNavItem:last-child {
+  border-bottom: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+  .investmentSection {
+    flex-direction: column;
+    min-height: auto;
+    padding: 40px 0;
+  }
+  
+  .investmentContent, .investmentImage {
+    width: 100%;
+  }
+  
+  .investmentImage {
+    height: 300px;
+    order: -1;
+  }
+  
+  .investmentContent {
+    padding: 40px 20px;
+  }
+  
+  .investmentTitle {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .newsGrid {
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+  }
+  
+  .newsCard {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+  
+  .sectionDivider {
+    margin: 30px auto;
+  }
+  
+  .footerRow {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .footerColumn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pageContainer {
+    padding: 0 20px;
+  }
+  
+  .mainNav {
+    display: none;
+  }
+  
+  .mobileMenuButton {
+    display: block;
+  }
+  
+  .heroText {
+    font-size: 42px;
+    line-height: 50px;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .heroButton {
+    top: 180px;
+  }
+  
+  .missionSection {
+    padding: 60px 20px;
+  }
+  
+  .missionText {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  
+  .missionParagraph {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 24px;
+  }
+  
+  .newsSection {
+    padding: 60px 20px;
+  }
+  
+  .newsTitle {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .contactSection {
+    padding: 60px 20px;
+  }
+  
+  .contactTitle {
+    font-size: 32px;
+  }
+  
+  .contactText {
+    font-size: 18px;
+  }
+  
+  .footer {
+    padding: 60px 20px 30px;
+  }
+  
+  .footerBottom {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heroText {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  
+  .heroButton {
+    top: 150px;
+  }
+  
+  .investmentTitle {
+    font-size: 32px;
+  }
+  
+  .investmentText {
+    font-size: 16px;
+  }
+  
+  .newsCardTitle {
+    font-size: 20px;
+  }
+  
+  .newsCardContent {
+    font-size: 14px;
+  }
+  
+  .missionText, .missionParagraph {
+    font-size: 20px;
+  }
 } 
