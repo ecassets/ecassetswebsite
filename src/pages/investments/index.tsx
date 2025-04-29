@@ -14,8 +14,8 @@ const Investments = () => {
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
-      // Calculate offset based on header height
-      const headerOffset = 80; // Adjust this value based on your actual fixed header height
+      // Calculate offset based on header + tabs height
+      const headerOffset = 130; // Approx header (73px) + tabs (57px)
       const elementPosition = ref.current.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerOffset;
@@ -51,96 +51,89 @@ const Investments = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      {/* Use classical page container for padding */}
-      <div className={styles.pageContainer}>
-        {/* Header from classical.tsx */}
-        <header className={styles.header}>
-          <Link href="/" className={styles.logo}>
-            {/* Assuming logo image path is correct, otherwise use text */}
-            <Image
-              src="/logo.png"
-              alt="EC Assets Logo"
-              width={160}
-              height={40}
-              priority
-            />
-          </Link>
-          {/* Desktop Navigation */}
-          <nav className={styles.mainNav}>
-            <Link
-              href="/investments"
-              className={`${styles.navItem} font-semibold text-black`}
-            >
-              {" "}
-              {/* Highlight current page */}
-              INVESTMENTS
-            </Link>
-            <Link href="/team" className={styles.navItem}>
-              TEAM
-            </Link>
-            <Link href="/news" className={styles.navItem}>
-              NEWS
-            </Link>
-            <Link href="/contact" className={styles.navItem}>
-              CONTACT
-            </Link>
-          </nav>
-          {/* Mobile Menu Button */}
-          <button
-            className={styles.mobileMenuButton}
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            <Image
-              src="/images/burger.svg"
-              alt="Menu"
-              width={24}
-              height={24}
-              className={styles.mobileMenuIcon}
-            />
-          </button>
-        </header>
-
-        {/* Mobile Navigation from classical.tsx */}
-        <nav
-          className={`${styles.mobileNav} ${
-            mobileMenuOpen ? styles.mobileNavActive : ""
-          }`}
-        >
+      {/* Header outside pageContainer */}
+      <header className={`${styles.header} ${styles.pageContainer}`}>
+        <Link href="/" className={styles.logo}>
+          <Image
+            src="/logo.png"
+            alt="EC Assets Logo"
+            width={160}
+            height={40}
+            priority
+          />
+        </Link>
+        <nav className={styles.mainNav}>
           <Link
             href="/investments"
-            className={`${styles.mobileNavItem} font-semibold text-black`}
-            onClick={() => setMobileMenuOpen(false)}
+            className={`${styles.navItem} font-semibold text-black`}
           >
             INVESTMENTS
           </Link>
-          <Link
-            href="/team"
-            className={styles.mobileNavItem}
-            onClick={() => setMobileMenuOpen(false)}
-          >
+          <Link href="/team" className={styles.navItem}>
             TEAM
           </Link>
-          <Link
-            href="/news"
-            className={styles.mobileNavItem}
-            onClick={() => setMobileMenuOpen(false)}
-          >
+          <Link href="/news" className={styles.navItem}>
             NEWS
           </Link>
-          <Link
-            href="/contact"
-            className={styles.mobileNavItem}
-            onClick={() => setMobileMenuOpen(false)}
-          >
+          <Link href="/contact" className={styles.navItem}>
             CONTACT
           </Link>
         </nav>
+        <button
+          className={styles.mobileMenuButton}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <Image
+            src="/images/burger.svg"
+            alt="Menu"
+            width={24}
+            height={24}
+            className={styles.mobileMenuIcon}
+          />
+        </button>
+      </header>
 
+      {/* Mobile Navigation sits outside structure */}
+      <nav
+        className={`${styles.mobileNav} ${
+          mobileMenuOpen ? styles.mobileNavActive : ""
+        }`}
+      >
+        <Link
+          href="/investments"
+          className={`${styles.mobileNavItem} font-semibold text-black`}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          INVESTMENTS
+        </Link>
+        <Link
+          href="/team"
+          className={styles.mobileNavItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          TEAM
+        </Link>
+        <Link
+          href="/news"
+          className={styles.mobileNavItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          NEWS
+        </Link>
+        <Link
+          href="/contact"
+          className={styles.mobileNavItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          CONTACT
+        </Link>
+      </nav>
+
+      {/* Main content now inside pageContainer */}
+      <div className={styles.pageContainer} style={{ paddingTop: 0 }}>
         {/* Hero Section */}
         <section className="relative w-full -mx-10">
-          {" "}
-          {/* Negative margin to counter container padding */}
           <div className="relative h-[400px]">
             <Image
               src="/photos/investments/heroinvestments.jpg"
@@ -159,9 +152,7 @@ const Investments = () => {
         </section>
 
         {/* Scrolling Tabs Section */}
-        <div className="w-full py-6 sticky top-[73px] bg-white z-10 border-b border-gray-200 -mx-10 px-10">
-          {" "}
-          {/* Sticky tabs below header */}
+        <div className="w-full py-6 border-b border-gray-200 -mx-10 px-10">
           <div className="container mx-auto flex justify-center space-x-16">
             <button
               onClick={() => handleTabClick("realEstate", realEstateRef)}
@@ -173,7 +164,7 @@ const Investments = () => {
             >
               Real Estate
               {activeTab === "realEstate" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8B1E20]"></span> // Red/Brown underline
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8B1E20]"></span>
               )}
             </button>
             <button
@@ -186,7 +177,7 @@ const Investments = () => {
             >
               Private Equity
               {activeTab === "privateEquity" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8B1E20]"></span> // Red/Brown underline
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8B1E20]"></span>
               )}
             </button>
           </div>
@@ -195,18 +186,12 @@ const Investments = () => {
         {/* Main Content Area */}
         <div className="container mx-auto">
           {/* Real Estate Main Section */}
-          <section ref={realEstateRef} className="py-20 scroll-mt-28">
-            {" "}
-            {/* scroll-mt for offset */}
+          <section ref={realEstateRef} className="py-20 scroll-mt-32">
             <div className="grid md:grid-cols-2 gap-16">
-              {" "}
-              {/* Changed to 2 cols */}
-              {/* Left Column (No longer sticky) */}
+              {/* Left Column (Sticky Again) */}
               <div className="md:col-span-1">
-                <div className="top-44">
-                  <h2 className="text-5xl font-light mb-8 text-center">
-                    Real Estate
-                  </h2>
+                <div className="sticky top-32">
+                  <h2 className="text-5xl font-light mb-8">Real Estate</h2>
                   <p className="text-gray-600 mb-6">
                     Since we started investing in real estate in 1994, the
                     growth of our business across both products and geographies
@@ -228,12 +213,10 @@ const Investments = () => {
               </div>
               {/* Scrolling Right */}
               <div className="md:col-span-1 space-y-20">
-                {" "}
-                {/* Changed to col-span-1 */}
                 {/* Commercial */}
                 <div>
                   <h3 className="text-4xl font-light mb-6">Commercial</h3>
-                  <div className="relative h-[400px] mb-6">
+                  <div className="relative h-[300px] md:h-[400px] mb-6">
                     <Image
                       src="/photos/investments/commercial.png"
                       alt="Modern commercial office space"
@@ -257,7 +240,7 @@ const Investments = () => {
                 {/* Industrial */}
                 <div>
                   <h3 className="text-4xl font-light mb-6">Industrial</h3>
-                  <div className="relative h-[400px] mb-6">
+                  <div className="relative h-[300px] md:h-[400px] mb-6">
                     <Image
                       src="/photos/investments/industrial.jpg"
                       alt="Industrial warehouse facility"
@@ -278,7 +261,7 @@ const Investments = () => {
                 {/* Residential */}
                 <div>
                   <h3 className="text-4xl font-light mb-6">Residential</h3>
-                  <div className="relative h-[400px] mb-6">
+                  <div className="relative h-[300px] md:h-[400px] mb-6">
                     <Image
                       src="/photos/investments/residential.jpg"
                       alt="Luxury residential apartment"
@@ -304,18 +287,12 @@ const Investments = () => {
           <hr className="my-20 border-gray-200" />
 
           {/* Private Equity Main Section */}
-          <section ref={privateEquityRef} className="py-20 scroll-mt-28">
-            {" "}
-            {/* scroll-mt for offset */}
+          <section ref={privateEquityRef} className="py-20 scroll-mt-32">
             <div className="grid md:grid-cols-2 gap-16">
-              {" "}
-              {/* Changed to 2 cols */}
-              {/* Left Column (No longer sticky) */}
+              {/* Left Column (Sticky Again) */}
               <div className="md:col-span-1">
-                <div className="top-44">
-                  <h2 className="text-5xl font-light mb-8 text-center">
-                    Private Equity
-                  </h2>
+                <div className="sticky top-32">
+                  <h2 className="text-5xl font-light mb-8">Private Equity</h2>
                   <p className="text-gray-600 mb-6">
                     We play a vital role in helping companies with talented
                     management teams realize their growth potential. We unlock
@@ -337,12 +314,10 @@ const Investments = () => {
               </div>
               {/* Scrolling Right */}
               <div className="md:col-span-1 space-y-20">
-                {" "}
-                {/* Changed to col-span-1 */}
                 {/* FinTech */}
                 <div>
                   <h3 className="text-4xl font-light mb-6">FinTech</h3>
-                  <div className="relative h-[400px] mb-6">
+                  <div className="relative h-[300px] md:h-[400px] mb-6">
                     <Image
                       src="/photos/investments/Blue.jpg"
                       alt="FinTech visualization"
@@ -364,7 +339,7 @@ const Investments = () => {
                 {/* HealthTech */}
                 <div>
                   <h3 className="text-4xl font-light mb-6">HealthTech</h3>
-                  <div className="relative h-[400px] mb-6">
+                  <div className="relative h-[300px] md:h-[400px] mb-6">
                     <Image
                       src="/photos/investments/Purple.jpg"
                       alt="HealthTech visualization"
@@ -386,7 +361,7 @@ const Investments = () => {
                 {/* WorkTech */}
                 <div>
                   <h3 className="text-4xl font-light mb-6">WorkTech</h3>
-                  <div className="relative h-[400px] mb-6">
+                  <div className="relative h-[300px] md:h-[400px] mb-6">
                     <Image
                       src="/photos/investments/Grey.jpg"
                       alt="WorkTech visualization"
@@ -410,7 +385,7 @@ const Investments = () => {
           </section>
         </div>
 
-        {/* CTA Section - Replaced with classical contact section */}
+        {/* CTA Section */}
         <section className={styles.contactSection}>
           <h2 className={styles.contactTitle}>Investing is our business.</h2>
           <p className={styles.contactText}>
@@ -425,10 +400,8 @@ const Investments = () => {
           </Link>
         </section>
 
-        {/* Footer from classical.tsx - Made lighter grey */}
-        <footer className={`bg-gray-600 text-white ${styles.footer} px-10`}>
-          {" "}
-          {/* Lighter grey + classical padding */}
+        {/* Footer */}
+        <footer className={`bg-gray-500 text-white ${styles.footer} py-20`}>
           <div className={styles.footerRow}>
             <div className={styles.footerColumn}>
               <Link href="/" className={styles.footerLogo}>
@@ -443,8 +416,6 @@ const Investments = () => {
                 href="/investments"
                 className={`${styles.footerLink} font-bold`}
               >
-                {" "}
-                {/* Highlight */}
                 Investments
               </Link>
               <Link href="/team" className={styles.footerLink}>
@@ -476,9 +447,9 @@ const Investments = () => {
                 <br />
                 United Kingdom
               </p>
-              {/* Social links from classical footer if desired - Add here */}
             </div>
           </div>
+
           <div className={styles.footerBottom}>
             <p>
               Copyright © {new Date().getFullYear()} by ec assets. All rights

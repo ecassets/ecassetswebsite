@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+// Use classical styles
+import styles from "../../styles/classical.module.css";
 
 interface NewsItem {
   id: string;
@@ -92,7 +92,7 @@ const newsItems: NewsItem[] = [
 
 const NewsCard: React.FC<{ news: NewsItem }> = ({ news }) => {
   return (
-    <div className="flex flex-col h-full">
+    <Link href={`/post/${news.slug}`} className={styles.newsCard}>
       <div className="relative w-full h-[240px] mb-6">
         <Image
           src={news.imagePath}
@@ -101,21 +101,20 @@ const NewsCard: React.FC<{ news: NewsItem }> = ({ news }) => {
           className="object-cover"
         />
       </div>
-      <h2 className="text-2xl font-light mb-3 text-black">{news.title}</h2>
-      <p className="text-gray-400 mb-6">{news.description}</p>
-      <div className="mt-auto">
-        <Link
-          href={`/post/${news.slug}`}
-          className="inline-block border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition-colors px-6 py-2 text-sm uppercase tracking-wider"
-        >
-          Read More
-        </Link>
-      </div>
-    </div>
+      <h3 className={styles.newsCardTitle}>{news.title}</h3>
+      <hr className={styles.newsCardDivider} />
+      <p className={styles.newsCardContent}>{news.description}</p>
+    </Link>
   );
 };
 
 const News = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Head>
@@ -124,14 +123,89 @@ const News = () => {
           name="description"
           content="Latest news and updates from EC Assets, including information about our investments, partnerships, and corporate developments."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="min-h-screen bg-white text-gray-900">
-        <Navigation />
+      <header className={`${styles.header} ${styles.pageContainer}`}>
+        <Link href="/" className={styles.logo}>
+          <Image
+            src="/logo.png"
+            alt="EC Assets Logo"
+            width={160}
+            height={40}
+            priority
+          />
+        </Link>
+        <nav className={styles.mainNav}>
+          <Link href="/investments" className={styles.navItem}>
+            INVESTMENTS
+          </Link>
+          <Link href="/team" className={styles.navItem}>
+            TEAM
+          </Link>
+          <Link
+            href="/news"
+            className={`${styles.navItem} font-semibold text-black`}
+          >
+            NEWS
+          </Link>
+          <Link href="/contact" className={styles.navItem}>
+            CONTACT
+          </Link>
+        </nav>
+        <button
+          className={styles.mobileMenuButton}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <Image
+            src="/images/burger.svg"
+            alt="Menu"
+            width={24}
+            height={24}
+            className={styles.mobileMenuIcon}
+          />
+        </button>
+      </header>
 
-        {/* Hero Section */}
-        <section className="relative w-full">
-          <div className="relative h-[400px]">
+      <nav
+        className={`${styles.mobileNav} ${
+          mobileMenuOpen ? styles.mobileNavActive : ""
+        }`}
+      >
+        <Link
+          href="/investments"
+          className={styles.mobileNavItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          INVESTMENTS
+        </Link>
+        <Link
+          href="/team"
+          className={styles.mobileNavItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          TEAM
+        </Link>
+        <Link
+          href="/news"
+          className={`${styles.mobileNavItem} font-semibold text-black`}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          NEWS
+        </Link>
+        <Link
+          href="/contact"
+          className={styles.mobileNavItem}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          CONTACT
+        </Link>
+      </nav>
+
+      <div>
+        <section className="relative w-full mb-10">
+          <div className="relative h-[400px] md:h-[500px]">
             <Image
               src="/photos/investments/heroinvestments.jpg"
               alt="News"
@@ -146,49 +220,94 @@ const News = () => {
           </div>
         </section>
 
-        {/* News Intro */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl font-light mb-6">Company News</h2>
+        <section className={styles.newsSection}>
+          <div className={styles.newsHeading}>NEWS</div>
+          <h2 className={styles.newsTitle}>Company News</h2>
+          <div className={styles.newsGrid}>
+            {newsItems.map((news) => (
+              <NewsCard key={news.id} news={news} />
+            ))}
           </div>
         </section>
 
-        {/* News Listing Section */}
-        <section className="py-10">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16">
-              {newsItems.map((news) => (
-                <NewsCard key={news.id} news={news} />
-              ))}
+        <section className={styles.contactSection}>
+          <h2 className={styles.contactTitle}>Investing is our business.</h2>
+          <p className={styles.contactText}>
+            Let us tell you more about our assets and investments.
+            <br />
+            Why not achieving more together?
+            <br />
+            Please contact us today!
+          </p>
+          <Link href="/contact" className={styles.investmentButton}>
+            Contact us
+          </Link>
+        </section>
+
+        <footer
+          className={`bg-gray-500 text-white ${styles.footer} px-10 py-20`}
+        >
+          <div className={styles.footerRow}>
+            <div className={styles.footerColumn}>
+              <Link href="/" className={styles.footerLogo}>
+                ec assets
+              </Link>
+              <p className={styles.footerText}>Investing is our business.</p>
+            </div>
+
+            <div className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Navigation</h3>
+              <Link href="/investments" className={styles.footerLink}>
+                Investments
+              </Link>
+              <Link href="/team" className={styles.footerLink}>
+                Team
+              </Link>
+              <Link href="/news" className={`${styles.footerLink} font-bold`}>
+                News
+              </Link>
+              <Link href="/contact" className={styles.footerLink}>
+                Contact
+              </Link>
+            </div>
+
+            <div className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Contact</h3>
+              <a
+                href="mailto:office@ecassets.com"
+                className={styles.footerLink}
+              >
+                office@ecassets.com
+              </a>
+              <a href="tel:+442087980342" className={styles.footerLink}>
+                +44 20 8798 0342
+              </a>
+              <p className={styles.footerAddress}>
+                13 Savile Row
+                <br />
+                London W1S 3PH
+                <br />
+                United Kingdom
+              </p>
             </div>
           </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gray-100">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-light mb-6">
-              Investing is our business.
-            </h2>
-            <p className="text-xl text-gray-600 mb-4">
-              Let us tell you more about our assets and investments.
+          <div className={styles.footerBottom}>
+            <p>
+              Copyright © {new Date().getFullYear()} by ec assets. All rights
+              reserved.
             </p>
-            <p className="text-xl text-gray-600 mb-4">
-              Why not achieving more together?
-            </p>
-            <p className="text-xl text-gray-600 mb-10">
-              Please contact us today!
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition-colors px-10 py-3 text-sm uppercase tracking-wider"
-            >
-              Contact us
-            </Link>
+            <div>
+              <Link href="/legals" className={styles.footerBottomLink}>
+                Legals
+              </Link>
+              <span style={{ margin: "0 10px", color: "#777" }}>|</span>
+              <Link href="/data-privacy" className={styles.footerBottomLink}>
+                Data Privacy
+              </Link>
+            </div>
           </div>
-        </section>
-
-        <Footer />
+        </footer>
       </div>
     </>
   );
