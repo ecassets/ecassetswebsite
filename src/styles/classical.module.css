@@ -14,10 +14,10 @@
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
   background-color: white;
   z-index: 100;
   border-bottom: 1px solid #e4e4e4;
+  padding: 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -446,7 +446,7 @@
 .mobileNav {
   display: none;
   position: fixed;
-  top: 73px;
+  top: 60px;
   left: 0;
   right: 0;
   background-color: white;

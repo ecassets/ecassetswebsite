@@ -19,84 +19,83 @@ export default function Classical() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      {/* Header outside pageContainer */}
-      <header className={`${styles.header} ${styles.pageContainer}`}>
-        <Link href="/" className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="EC Assets Logo"
-            width={160}
-            height={40}
-            priority
-          />
-        </Link>
-        <nav className={styles.mainNav}>
-          <Link href="/investments" className={styles.navItem}>
+      <div className={styles.pageContainer}>
+        {/* Header */}
+        <header className={styles.header}>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/logo.png"
+              alt="EC Assets Logo"
+              width={160}
+              height={40}
+              priority
+            />
+          </Link>
+          <nav className={styles.mainNav}>
+            <Link href="/investments" className={styles.navItem}>
+              INVESTMENTS
+            </Link>
+            <Link href="/team" className={styles.navItem}>
+              TEAM
+            </Link>
+            <Link href="/news" className={styles.navItem}>
+              NEWS
+            </Link>
+            <Link href="/contact" className={styles.navItem}>
+              CONTACT
+            </Link>
+          </nav>
+          <button
+            className={styles.mobileMenuButton}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <Image
+              src="/images/burger.svg"
+              alt="Menu"
+              width={24}
+              height={24}
+              className={styles.mobileMenuIcon}
+            />
+          </button>
+        </header>
+
+        {/* Mobile Navigation */}
+        <nav
+          className={`${styles.mobileNav} ${
+            mobileMenuOpen ? styles.mobileNavActive : ""
+          }`}
+        >
+          <Link
+            href="/investments"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             INVESTMENTS
           </Link>
-          <Link href="/team" className={styles.navItem}>
+          <Link
+            href="/team"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             TEAM
           </Link>
-          <Link href="/news" className={styles.navItem}>
+          <Link
+            href="/news"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             NEWS
           </Link>
-          <Link href="/contact" className={styles.navItem}>
+          <Link
+            href="/contact"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             CONTACT
           </Link>
         </nav>
-        <button
-          className={styles.mobileMenuButton}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <Image
-            src="/images/burger.svg"
-            alt="Menu"
-            width={24}
-            height={24}
-            className={styles.mobileMenuIcon}
-          />
-        </button>
-      </header>
 
-      {/* Mobile Navigation sits outside structure, positioned relative to header */}
-      <nav
-        className={`${styles.mobileNav} ${
-          mobileMenuOpen ? styles.mobileNavActive : ""
-        }`}
-      >
-        <Link
-          href="/investments"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          INVESTMENTS
-        </Link>
-        <Link
-          href="/team"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          TEAM
-        </Link>
-        <Link
-          href="/news"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          NEWS
-        </Link>
-        <Link
-          href="/contact"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          CONTACT
-        </Link>
-      </nav>
-
-      {/* Main content now inside pageContainer */}
-      <div className={styles.pageContainer} style={{ paddingTop: 0 }}>
         {/* Hero Section */}
         <section className={styles.hero}>
           <Image
@@ -263,7 +262,9 @@ export default function Classical() {
         </section>
 
         {/* Footer */}
-        <footer className={`bg-gray-500 text-white ${styles.footer} py-20`}>
+        <footer
+          className={`bg-gray-500 text-white ${styles.footer} px-10 py-20`}
+        >
           <div className={styles.footerRow}>
             <div className={styles.footerColumn}>
               <Link href="/" className={styles.footerLogo}>

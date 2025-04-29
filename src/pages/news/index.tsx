@@ -126,86 +126,86 @@ const News = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <header className={`${styles.header} ${styles.pageContainer}`}>
-        <Link href="/" className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="EC Assets Logo"
-            width={160}
-            height={40}
-            priority
-          />
-        </Link>
-        <nav className={styles.mainNav}>
-          <Link href="/investments" className={styles.navItem}>
+      <div className={styles.pageContainer}>
+        <header className={styles.header}>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/logo.png"
+              alt="EC Assets Logo"
+              width={160}
+              height={40}
+              priority
+            />
+          </Link>
+          <nav className={styles.mainNav}>
+            <Link href="/investments" className={styles.navItem}>
+              INVESTMENTS
+            </Link>
+            <Link href="/team" className={styles.navItem}>
+              TEAM
+            </Link>
+            <Link
+              href="/news"
+              className={`${styles.navItem} font-semibold text-black`}
+            >
+              NEWS
+            </Link>
+            <Link href="/contact" className={styles.navItem}>
+              CONTACT
+            </Link>
+          </nav>
+          <button
+            className={styles.mobileMenuButton}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <Image
+              src="/images/burger.svg"
+              alt="Menu"
+              width={24}
+              height={24}
+              className={styles.mobileMenuIcon}
+            />
+          </button>
+        </header>
+
+        <nav
+          className={`${styles.mobileNav} ${
+            mobileMenuOpen ? styles.mobileNavActive : ""
+          }`}
+        >
+          <Link
+            href="/investments"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             INVESTMENTS
           </Link>
-          <Link href="/team" className={styles.navItem}>
+          <Link
+            href="/team"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             TEAM
           </Link>
           <Link
             href="/news"
-            className={`${styles.navItem} font-semibold text-black`}
+            className={`${styles.mobileNavItem} font-semibold text-black`}
+            onClick={() => setMobileMenuOpen(false)}
           >
             NEWS
           </Link>
-          <Link href="/contact" className={styles.navItem}>
+          <Link
+            href="/contact"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             CONTACT
           </Link>
         </nav>
-        <button
-          className={styles.mobileMenuButton}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <Image
-            src="/images/burger.svg"
-            alt="Menu"
-            width={24}
-            height={24}
-            className={styles.mobileMenuIcon}
-          />
-        </button>
-      </header>
 
-      <nav
-        className={`${styles.mobileNav} ${
-          mobileMenuOpen ? styles.mobileNavActive : ""
-        }`}
-      >
-        <Link
-          href="/investments"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          INVESTMENTS
-        </Link>
-        <Link
-          href="/team"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          TEAM
-        </Link>
-        <Link
-          href="/news"
-          className={`${styles.mobileNavItem} font-semibold text-black`}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          NEWS
-        </Link>
-        <Link
-          href="/contact"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          CONTACT
-        </Link>
-      </nav>
-
-      <div>
-        <section className="relative w-full mb-10">
-          <div className="relative h-[400px] md:h-[500px]">
+        <section className="relative w-full -mx-10 mb-10">
+          <div className="relative h-[400px]">
             <Image
               src="/photos/investments/heroinvestments.jpg"
               alt="News"

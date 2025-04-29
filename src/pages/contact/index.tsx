@@ -6,245 +6,330 @@ import Link from "next/link";
 import styles from "../../styles/classical.module.css";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Mobile menu toggle
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form submitted:", formData);
   };
 
   return (
     <>
       <Head>
-        <title>Contact Us | EC Assets</title>
+        <title>Contact | EC Assets</title>
         <meta
           name="description"
-          content="Get in touch with EC Assets. Contact us via form, email, or phone. Find our office locations."
+          content="Contact EC Assets - Get in touch with our team and learn more about our investment opportunities."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      {/* Header outside pageContainer */}
-      <header className={`${styles.header} ${styles.pageContainer}`}>
-        <Link href="/" className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="EC Assets Logo"
-            width={160}
-            height={40}
-            priority
-          />
-        </Link>
-        <nav className={styles.mainNav}>
-          <Link href="/investments" className={styles.navItem}>
+      {/* Use classical page container for padding */}
+      <div className={styles.pageContainer}>
+        {/* Header from classical.tsx */}
+        <header className={styles.header}>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/logo.png"
+              alt="EC Assets Logo"
+              width={160}
+              height={40}
+              priority
+            />
+          </Link>
+          <nav className={styles.mainNav}>
+            <Link href="/investments" className={styles.navItem}>
+              INVESTMENTS
+            </Link>
+            <Link href="/team" className={styles.navItem}>
+              TEAM
+            </Link>
+            <Link href="/news" className={styles.navItem}>
+              NEWS
+            </Link>
+            <Link
+              href="/contact"
+              className={`${styles.navItem} font-semibold text-black`}
+            >
+              {" "}
+              {/* Highlight */}
+              CONTACT
+            </Link>
+          </nav>
+          <button
+            className={styles.mobileMenuButton}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <Image
+              src="/images/burger.svg"
+              alt="Menu"
+              width={24}
+              height={24}
+              className={styles.mobileMenuIcon}
+            />
+          </button>
+        </header>
+
+        {/* Mobile Navigation from classical.tsx */}
+        <nav
+          className={`${styles.mobileNav} ${
+            mobileMenuOpen ? styles.mobileNavActive : ""
+          }`}
+        >
+          <Link
+            href="/investments"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             INVESTMENTS
           </Link>
-          <Link href="/team" className={styles.navItem}>
+          <Link
+            href="/team"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             TEAM
           </Link>
-          <Link href="/news" className={styles.navItem}>
+          <Link
+            href="/news"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             NEWS
           </Link>
           <Link
             href="/contact"
-            className={`${styles.navItem} font-semibold text-black`}
+            className={`${styles.mobileNavItem} font-semibold text-black`}
+            onClick={() => setMobileMenuOpen(false)}
           >
             CONTACT
           </Link>
         </nav>
-        <button
-          className={styles.mobileMenuButton}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <Image
-            src="/images/burger.svg"
-            alt="Menu"
-            width={24}
-            height={24}
-            className={styles.mobileMenuIcon}
-          />
-        </button>
-      </header>
 
-      {/* Mobile Navigation sits outside structure */}
-      <nav
-        className={`${styles.mobileNav} ${
-          mobileMenuOpen ? styles.mobileNavActive : ""
-        }`}
-      >
-        <Link
-          href="/investments"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          INVESTMENTS
-        </Link>
-        <Link
-          href="/team"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          TEAM
-        </Link>
-        <Link
-          href="/news"
-          className={styles.mobileNavItem}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          NEWS
-        </Link>
-        <Link
-          href="/contact"
-          className={`${styles.mobileNavItem} font-semibold text-black`}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          CONTACT
-        </Link>
-      </nav>
-
-      {/* Main content now inside pageContainer, NO top padding */}
-      <div className={styles.pageContainer} style={{ paddingTop: 0 }}>
-        {/* Hero Section */}
-        <section className="relative w-full -mx-10">
-          <div className="relative h-[400px]">
-            <Image
-              src="/photos/contact/herocontactus.jpg"
-              alt="Office building exterior"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h1 className="text-6xl font-light text-white">Contact Us</h1>
+        {/* Original Page Content - Wrapped in container for consistency */}
+        <div className="container mx-auto py-10">
+          {/* Hero Section */}
+          <section className="relative w-full -mx-10 mb-10">
+            <div className="relative h-[400px]">
+              <Image
+                src="/photos/investments/heroinvestments.jpg" // Placeholder
+                alt="Professional conducting a business meeting"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h1 className="text-6xl font-light text-white">Contact Us</h1>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Contact Form and Info Section */}
-        <section className="py-20">
-          <div className="container mx-auto grid md:grid-cols-2 gap-16 items-start">
-            {/* Contact Form */}
-            <div className="md:col-span-1">
-              <h2 className="text-4xl font-light mb-8">Get in Touch</h2>
-              <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                  ></textarea>
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#8B1E20] hover:bg-[#7a1a1c] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8B1E20]"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
+          {/* Contact Section */}
+          <section className="py-20">
+            <div className="mb-12">
+              <h2 className="text-4xl font-light mb-6 text-center">
+                Contact us
+              </h2>
+              <p className="text-gray-600 mb-10 max-w-2xl mx-auto text-center">
+                Let us tell you more about our assets, our investments and our
+                company. Why not achieving more together? Please contact us
+                today!
+              </p>
             </div>
 
-            {/* Contact Info & Locations */}
-            <div className="md:col-span-1 space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+              {/* Left Column - Contact Form */}
+              <div className="md:col-span-2">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm uppercase tracking-wider font-medium text-gray-700 mb-2"
+                    >
+                      NAME
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm uppercase tracking-wider font-medium text-gray-700 mb-2"
+                    >
+                      EMAIL ADDRESS
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm uppercase tracking-wider font-medium text-gray-700 mb-2"
+                    >
+                      MESSAGE
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Hi there, I'm reaching out because..."
+                      rows={6}
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <button
+                      type="submit"
+                      className="w-full py-4 border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white uppercase tracking-wider text-sm transition-colors"
+                    >
+                      SUBMIT
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Right Column - Office Locations */}
               <div>
-                <h3 className="text-3xl font-light mb-4">
-                  Contact Information
-                </h3>
-                <p className="text-gray-600 mb-2">
-                  Email:{" "}
+                <div className="mb-12">
+                  <h3 className="text-sm uppercase tracking-wider font-medium text-[#8B0000] mb-4">
+                    MAIN OFFICE
+                  </h3>
+                  <h4 className="text-xl font-light mb-2">
+                    EC Assets Capital Management
+                  </h4>
+                  <p className="text-gray-600">
+                    13 Savile Row
+                    <br />
+                    London W1S 3PH, United Kingdom
+                  </p>
+                </div>
+
+                <div className="mb-12">
+                  <h3 className="text-sm uppercase tracking-wider font-medium text-[#8B0000] mb-4">
+                    OUR OFFICES
+                  </h3>
+
+                  <div className="mb-8">
+                    <h4 className="text-xl font-light mb-2">EC Assets Lux</h4>
+                    <p className="text-gray-600">
+                      Vauxhall Management
+                      <br />
+                      35 Avenue de Monterey
+                      <br />
+                      2163 Luxembourg, Luxembourg
+                    </p>
+                  </div>
+
+                  <div className="mb-8">
+                    <h4 className="text-xl font-light mb-2">EC Assets UAE</h4>
+                    <p className="text-gray-600">
+                      Business Center 1<br />
+                      Nad Al Sheba
+                      <br />
+                      Dubai, United Arab Emirates
+                    </p>
+                  </div>
+
+                  <div className="mb-8">
+                    <h4 className="text-xl font-light mb-2">EC Assets CY</h4>
+                    <p className="text-gray-600">
+                      27 Hospital Road
+                      <br />
+                      George Town
+                      <br />
+                      KY1 - 9001, Cayman Islands
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mb-12">
+                  <h3 className="text-sm uppercase tracking-wider font-medium text-[#8B0000] mb-4">
+                    WORKING HOURS
+                  </h3>
+                  <p className="text-gray-600">9am - 5pm, Mon - Fri</p>
+                </div>
+
+                <div>
+                  <h3 className="text-sm uppercase tracking-wider font-medium text-[#8B0000] mb-4">
+                    CONTACT
+                  </h3>
                   <a
                     href="mailto:office@ecassets.com"
-                    className="text-[#8B1E20] hover:underline"
+                    className="block text-gray-600 mb-2 hover:text-gray-900"
                   >
                     office@ecassets.com
                   </a>
-                </p>
-                <p className="text-gray-600">
-                  Phone:{" "}
                   <a
                     href="tel:+442087980342"
-                    className="text-[#8B1E20] hover:underline"
+                    className="block text-gray-600 hover:text-gray-900"
                   >
                     +44 20 8798 0342
                   </a>
-                </p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-light mb-4">Our Offices</h3>
-                {/* London Office */}
-                <div className="mb-6">
-                  <h4 className="text-xl font-medium text-gray-800 mb-2">
-                    London
-                  </h4>
-                  <p className="text-gray-600">13 Savile Row</p>
-                  <p className="text-gray-600">London W1S 3PH</p>
-                  <p className="text-gray-600">United Kingdom</p>
                 </div>
-                {/* Add other offices if applicable */}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Map Section */}
-        <section className="w-full h-[400px] md:h-[500px] -mx-10 mb-20">
-          {" "}
-          {/* Responsive height */}
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.101872360118!2d-0.1417078842309616!3d51.51235477963603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d58c6a9f9b%3A0x8d1b081c8b0e1c40!2s13%20Savile%20Row%2C%20London%20W1S%203NE%2C%20UK!5e0!3m2!1sen!2sus!4v1678886412345!5m2!1sen!2sus" // Replace with your actual embed URL
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Office Location Map"
-          ></iframe>
-        </section>
+          {/* Map Section */}
+          <section className="w-full h-[500px] relative -mx-10 mt-10">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2889089226976!2d-0.14344548380863036!3d51.51233597963526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d5f12c8b15%3A0x7b0678853817675!2sSavile%20Row%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: "grayscale(100%)" }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </section>
+        </div>
 
-        {/* Footer */}
-        <footer className={`bg-gray-500 text-white ${styles.footer} py-20`}>
+        {/* Footer from classical.tsx - Made lighter grey */}
+        <footer
+          className={`bg-gray-500 text-white ${styles.footer} px-10 py-20`}
+        >
           <div className={styles.footerRow}>
             <div className={styles.footerColumn}>
               <Link href="/" className={styles.footerLogo}>
@@ -268,6 +353,8 @@ const Contact = () => {
                 href="/contact"
                 className={`${styles.footerLink} font-bold`}
               >
+                {" "}
+                {/* Highlight */}
                 Contact
               </Link>
             </div>
