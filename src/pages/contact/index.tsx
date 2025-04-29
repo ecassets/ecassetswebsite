@@ -60,16 +60,20 @@ const Contact = () => {
         {/* Contact Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              {/* Left Column - Contact Form */}
-              <div>
-                <h2 className="text-4xl font-light mb-4">Contact us</h2>
-                <p className="text-gray-600 mb-8">
-                  Let us tell you more about our assets, our investments and our
-                  company. Why not achieving more together? Please contact us
-                  today!
-                </p>
+            <div className="mb-12">
+              <h2 className="text-4xl font-light mb-6 text-center">
+                Contact us
+              </h2>
+              <p className="text-gray-600 mb-10 max-w-2xl mx-auto text-center">
+                Let us tell you more about our assets, our investments and our
+                company. Why not achieving more together? Please contact us
+                today!
+              </p>
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+              {/* Left Column - Contact Form */}
+              <div className="md:col-span-2">
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
                     <label
@@ -131,7 +135,7 @@ const Contact = () => {
                   <div>
                     <button
                       type="submit"
-                      className="w-full py-4 bg-gray-800 text-white uppercase tracking-wider text-sm hover:bg-gray-700 transition-colors"
+                      className="w-full py-4 border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white uppercase tracking-wider text-sm transition-colors"
                     >
                       SUBMIT
                     </button>
@@ -230,33 +234,11 @@ const Contact = () => {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2889089226976!2d-0.14344548380863036!3d51.51233597963526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d5f12c8b15%3A0x7b0678853817675!2sSavile%20Row%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, filter: "grayscale(100%)" }}
               allowFullScreen={false}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-light mb-6">
-              Investing is our business.
-            </h2>
-            <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
-              Let us tell you more about our assets and investments. Why not
-              achieving more together?
-            </p>
-            <p className="text-xl text-gray-600 mb-10">
-              Please contact us today!
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition-colors px-10 py-3 text-sm uppercase tracking-wider"
-            >
-              Contact Us
-            </Link>
           </div>
         </section>
 

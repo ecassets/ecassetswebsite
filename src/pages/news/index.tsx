@@ -101,13 +101,12 @@ const NewsCard: React.FC<{ news: NewsItem }> = ({ news }) => {
           className="object-cover"
         />
       </div>
-      <p className="text-gray-600 mb-2">{news.date}</p>
-      <h2 className="text-2xl font-light mb-3">{news.title}</h2>
-      <p className="text-gray-600 mb-6">{news.description}</p>
+      <h2 className="text-2xl font-light mb-3 text-black">{news.title}</h2>
+      <p className="text-gray-400 mb-6">{news.description}</p>
       <div className="mt-auto">
         <Link
           href={`/post/${news.slug}`}
-          className="inline-block bg-gray-900 text-white hover:bg-gray-800 px-6 py-2 text-sm uppercase tracking-wider transition-colors"
+          className="inline-block border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition-colors px-6 py-2 text-sm uppercase tracking-wider"
         >
           Read More
         </Link>
@@ -132,15 +131,30 @@ const News = () => {
 
         {/* Hero Section */}
         <section className="relative w-full">
-          <div className="relative h-[400px] bg-gray-800">
+          <div className="relative h-[400px]">
+            <Image
+              src="/photos/investments/heroinvestments.jpg"
+              alt="News"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/20"></div>
             <div className="absolute inset-0 flex items-center justify-center">
               <h1 className="text-6xl font-light text-white">News</h1>
             </div>
           </div>
         </section>
 
+        {/* News Intro */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl font-light mb-6">Company News</h2>
+          </div>
+        </section>
+
         {/* News Listing Section */}
-        <section className="py-20">
+        <section className="py-10">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16">
               {newsItems.map((news) => (
@@ -156,9 +170,11 @@ const News = () => {
             <h2 className="text-4xl font-light mb-6">
               Investing is our business.
             </h2>
-            <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
-              Let us tell you more about our assets and investments. Why not
-              achieving more together?
+            <p className="text-xl text-gray-600 mb-4">
+              Let us tell you more about our assets and investments.
+            </p>
+            <p className="text-xl text-gray-600 mb-4">
+              Why not achieving more together?
             </p>
             <p className="text-xl text-gray-600 mb-10">
               Please contact us today!

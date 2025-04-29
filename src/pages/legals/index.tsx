@@ -21,10 +21,9 @@ const Legals = () => {
         {/* Hero Section */}
         <section className="relative w-full">
           <div className="relative h-[300px] bg-gray-800">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h1 className="text-6xl font-light text-white">
-                Legal Disclosure
-              </h1>
+            <div className="absolute inset-0 flex items-center justify-center flex-col">
+              <h1 className="text-6xl font-light text-white mb-4">Legals</h1>
+              <div className="w-20 border-t border-white"></div>
             </div>
           </div>
         </section>

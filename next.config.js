@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  // Enable static exports for the sitemap
-  output: 'export',
+  // swcMinify is often enabled by default or may be deprecated
+  // output: 'export', // Commenting out as it conflicts with rewrites
   // Configure sitemap generation
   async rewrites() {
     return [

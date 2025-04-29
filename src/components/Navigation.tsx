@@ -15,8 +15,9 @@ const Navigation = ({
   showActions = true,
   transparent,
 }: NavigationProps) => {
-  const { push } = useRouter();
+  const { push, pathname } = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isHomePage = pathname === "/";
 
   const navLinks = [
     { text: "INVESTMENTS", url: "/investments" },
@@ -26,7 +27,11 @@ const Navigation = ({
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200">
+    <nav
+      className={`bg-white border-b border-gray-200 ${
+        isHomePage ? "fixed w-full z-50" : ""
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
@@ -43,7 +48,11 @@ const Navigation = ({
                 <Link
                   key={index}
                   href={link.url}
-                  className="text-sm tracking-wider text-gray-500 hover:text-gray-900"
+                  className={`text-xs tracking-wider hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded transition-colors ${
+                    pathname.startsWith(link.url)
+                      ? "text-black font-semibold"
+                      : "text-gray-500"
+                  }`}
                 >
                   {link.text}
                 </Link>
@@ -75,7 +84,11 @@ const Navigation = ({
                   key={index}
                   href={link.url}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block py-2 px-3 text-base text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
+                  className={`block py-2 px-3 text-xs hover:bg-gray-50 rounded-md transition-colors ${
+                    pathname.startsWith(link.url)
+                      ? "text-black font-semibold"
+                      : "text-gray-700"
+                  }`}
                 >
                   {link.text}
                 </Link>

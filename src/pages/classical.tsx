@@ -23,7 +23,13 @@ export default function Classical() {
         {/* Header */}
         <header className={styles.header}>
           <Link href="/" className={styles.logo}>
-            ec assets
+            <Image
+              src="/logo.png"
+              alt="EC Assets Logo"
+              width={160}
+              height={40}
+              priority
+            />
           </Link>
           <nav className={styles.mainNav}>
             <Link href="/investments" className={styles.navItem}>
@@ -44,9 +50,11 @@ export default function Classical() {
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
-            <img
+            <Image
               src="/images/burger.svg"
               alt="Menu"
+              width={24}
+              height={24}
               className={styles.mobileMenuIcon}
             />
           </button>
@@ -129,7 +137,7 @@ export default function Classical() {
 
         {/* Real Estate Section */}
         <section className={styles.investmentSection}>
-          <div className={styles.investmentContent}>
+          <div className={styles.investmentContent} style={{ paddingLeft: 0 }}>
             <div className={styles.investmentLabel}>OUR INVESTMENTS</div>
             <h2 className={styles.investmentTitle}>Real Estate</h2>
             <p className={styles.investmentText}>
@@ -166,7 +174,7 @@ export default function Classical() {
               priority
             />
           </div>
-          <div className={styles.investmentContent}>
+          <div className={styles.investmentContent} style={{ paddingRight: 0 }}>
             <div className={styles.investmentLabel}>OUR INVESTMENTS</div>
             <h2 className={styles.investmentTitle}>Private Equity</h2>
             <p className={styles.investmentText}>
@@ -242,12 +250,13 @@ export default function Classical() {
         <section className={styles.contactSection}>
           <h2 className={styles.contactTitle}>Investing is our business.</h2>
           <p className={styles.contactText}>
-            Let us tell you more about our assets and investments. Why not
-            achieving more together?
+            Let us tell you more about our assets and investments.
+            <br />
+            Why not achieving more together?
             <br />
             Please contact us today!
           </p>
-          <Link href="/contact" className={styles.contactButton}>
+          <Link href="/contact" className={styles.investmentButton}>
             Contact us
           </Link>
         </section>
@@ -256,7 +265,9 @@ export default function Classical() {
         <footer className={styles.footer}>
           <div className={styles.footerRow}>
             <div className={styles.footerColumn}>
-              <div className={styles.footerLogo}>ec assets</div>
+              <Link href="/" className={styles.footerLogo}>
+                ec assets
+              </Link>
               <p className={styles.footerText}>Investing is our business.</p>
             </div>
 
@@ -287,51 +298,28 @@ export default function Classical() {
               <a href="tel:+442087980342" className={styles.footerLink}>
                 +44 20 8798 0342
               </a>
-              <div className={styles.footerAddress}>
+              <p className={styles.footerAddress}>
                 13 Savile Row
                 <br />
                 London W1S 3PH
                 <br />
                 United Kingdom
-              </div>
-              <div className={styles.socialLinks}>
-                <a
-                  href="https://www.linkedin.com/company/ecassets"
-                  target="_blank"
-                  className={styles.socialLink}
-                >
-                  <img
-                    src="/images/LinkedIN_black.svg"
-                    width="24"
-                    height="24"
-                    alt="LinkedIn"
-                  />
-                </a>
-                <a
-                  href="https://twitter.com/ecassets"
-                  target="_blank"
-                  className={styles.socialLink}
-                >
-                  <img
-                    src="/images/Twitter_black.svg"
-                    width="24"
-                    height="24"
-                    alt="Twitter"
-                  />
-                </a>
-              </div>
+              </p>
             </div>
           </div>
 
           <div className={styles.footerBottom}>
-            <div>© Copyright {new Date().getFullYear()} by ec assets</div>
+            <p>
+              Copyright © {new Date().getFullYear()} by ec assets. All rights
+              reserved.
+            </p>
             <div>
               <Link href="/legals" className={styles.footerBottomLink}>
                 Legals
-              </Link>{" "}
-              |
-              <Link href="/data-policy" className={styles.footerBottomLink}>
-                Data Policy
+              </Link>
+              <span style={{ margin: "0 10px", color: "#777" }}>|</span>
+              <Link href="/data-privacy" className={styles.footerBottomLink}>
+                Data Privacy
               </Link>
             </div>
           </div>

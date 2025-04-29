@@ -40,9 +40,9 @@ const Team = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-light mb-6">Our people</h2>
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            <h3 className="text-4xl font-light mb-10 max-w-2xl mx-auto">
               Our world-class team
-            </p>
+            </h3>
           </div>
         </section>
 
@@ -51,8 +51,8 @@ const Team = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Jason Keogh */}
-              <div className="bg-gray-100">
-                <div className="relative h-[450px]">
+              <div className="border border-gray-300">
+                <div className="relative h-[400px]">
                   <Image
                     src="/photos/team/Jason.png"
                     alt="Jason Keogh"
@@ -85,8 +85,8 @@ const Team = () => {
               </div>
 
               {/* Christian Frealdsson */}
-              <div className="bg-gray-100">
-                <div className="relative h-[450px]">
+              <div className="border border-gray-300">
+                <div className="relative h-[400px]">
                   <Image
                     src="/photos/team/Christian.jpg"
                     alt="Christian Frealdsson"
@@ -126,9 +126,11 @@ const Team = () => {
             <h2 className="text-4xl font-light mb-6">
               Investing is our business.
             </h2>
-            <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
-              Let us tell you more about our assets and investments. Why not
-              achieving more together?
+            <p className="text-xl text-gray-600 mb-4">
+              Let us tell you more about our assets and investments.
+            </p>
+            <p className="text-xl text-gray-600 mb-4">
+              Why not achieving more together?
             </p>
             <p className="text-xl text-gray-600 mb-10">
               Please contact us today!
@@ -137,7 +139,7 @@ const Team = () => {
               href="/contact"
               className="inline-block border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition-colors px-10 py-3 text-sm uppercase tracking-wider"
             >
-              Contact Us
+              Contact us
             </Link>
           </div>
         </section>

@@ -178,10 +178,11 @@
 }
 
 .sectionDivider {
-  width: 90%;
-  margin: 60px auto;
+  width: 100%;
+  margin: 78px auto;
   height: 1px;
   background-color: #e4e4e4;
+  max-width: none;
 }
 
 /* Dividers */
@@ -627,4 +628,28 @@
   .missionText, .missionParagraph {
     font-size: 20px;
   }
+}
+
+.investmentTabs {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  display: flex;
+}
+
+.investmentTab {
+  padding-bottom: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 48px;
+  cursor: pointer;
+}
+
+.investmentTabActive {
+  border-bottom: 2px solid #333;
+  color: #333;
+}
+
+.investmentTabInactive {
+  color: #777;
 } 

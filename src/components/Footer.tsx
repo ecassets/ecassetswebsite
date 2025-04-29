@@ -1,11 +1,14 @@
 import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { pathname } = useRouter();
 
   return (
-    <footer className="bg-gray-800 text-white">
+    <footer className="bg-gray-700 text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {/* Logo and Tagline */}
@@ -21,7 +24,9 @@ const Footer = () => {
               <li>
                 <Link
                   href="/investments"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className={`text-gray-300 hover:text-white transition-colors ${
+                    pathname.startsWith("/investments") ? "font-bold" : ""
+                  }`}
                 >
                   Investments
                 </Link>
@@ -29,7 +34,9 @@ const Footer = () => {
               <li>
                 <Link
                   href="/team"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className={`text-gray-300 hover:text-white transition-colors ${
+                    pathname.startsWith("/team") ? "font-bold" : ""
+                  }`}
                 >
                   Team
                 </Link>
@@ -37,7 +44,9 @@ const Footer = () => {
               <li>
                 <Link
                   href="/news"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className={`text-gray-300 hover:text-white transition-colors ${
+                    pathname.startsWith("/news") ? "font-bold" : ""
+                  }`}
                 >
                   News
                 </Link>
@@ -45,7 +54,9 @@ const Footer = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className={`text-gray-300 hover:text-white transition-colors ${
+                    pathname.startsWith("/contact") ? "font-bold" : ""
+                  }`}
                 >
                   Contact
                 </Link>
@@ -108,20 +119,38 @@ const Footer = () => {
             © Copyright {currentYear} by ec assets
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link
-              href="/legals"
-              className="text-gray-400 hover:text-white text-sm"
-            >
-              Legals
-            </Link>
-            <Link
-              href="/data-privacy"
-              className="text-gray-400 hover:text-white text-sm"
-            >
-              Data Privacy
-            </Link>
+            <div className="border-t border-gray-400 pt-2">
+              <Link
+                href="/legals"
+                className="text-gray-400 hover:text-white text-sm"
+              >
+                Legals
+              </Link>
+              <span className="text-gray-400 mx-2">|</span>
+              <Link
+                href="/data-privacy"
+                className="text-gray-400 hover:text-white text-sm"
+              >
+                Data Privacy
+              </Link>
+            </div>
           </div>
         </div>
+      </div>
+      <div className="text-center pb-8">
+        <a
+          href="https://cdn.prod.website-files.com/5fbd373f29172ab124e7c4d/5fc76bab555c1e0966b08b8f_ec_logo_white.png"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="https://cdn.prod.website-files.com/5fbd373f29172ab124e7c4d/5fc76bab555c1e0966b08b8f_ec_logo_white.png"
+            alt="EC Assets Logo"
+            width={100}
+            height={40}
+            className="mx-auto"
+          />
+        </a>
       </div>
     </footer>
   );
