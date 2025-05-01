@@ -1,103 +1,219 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import styles from "../styles/classical.module.css";
 
-interface NavigationProps {
-  currentPage?: string;
-  showActions?: boolean;
-  transparent?: boolean;
-}
+const Navigation = () => {
+  const router = useRouter();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-const Navigation = ({
-  currentPage,
-  showActions = true,
-  transparent,
-}: NavigationProps) => {
-  const { push, pathname } = useRouter();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isHomePage = pathname === "/";
+  // Set mounted state when component mounts on client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const navLinks = [
-    { text: "INVESTMENTS", url: "/investments" },
-    { text: "TEAM", url: "/team" },
-    { text: "NEWS", url: "/news" },
-    { text: "CONTACT", url: "/contact" },
-  ];
+  // Detect scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    if (mounted) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [mounted]);
+
+  // Mobile menu toggle
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
-    <nav
-      className={`bg-white border-b border-gray-200 ${
-        isHomePage ? "fixed w-full z-50" : ""
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
-              <div className="text-[#8B0000] text-4xl font-bold">ec assets</div>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
-            <div className="flex items-center gap-12">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.url}
-                  className={`text-xs tracking-wider hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded transition-colors ${
-                    pathname.startsWith(link.url)
-                      ? "text-black font-semibold"
-                      : "text-gray-500"
-                  }`}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
-            >
-              {isMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </button>
-          </div>
+    <>
+      {/* Header with conditional border on scroll */}
+      <header
+        className={`${styles.header}`}
+        style={{
+          zIndex: 50,
+          width: "calc(100% + 80px)",
+          marginLeft: "-40px",
+          paddingLeft: "40px",
+          paddingRight: "40px",
+          borderBottom: isScrolled ? "1px solid #e4e4e4" : "none",
+          boxShadow: "none",
+          marginBottom: 0,
+          paddingBottom: 0,
+          height: "80px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/logo.png"
+              alt="EC Assets Logo"
+              width={150}
+              height={38}
+              priority
+            />
+          </Link>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50">
-            <div className="px-4 py-3 space-y-1">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.url}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block py-2 px-3 text-xs hover:bg-gray-50 rounded-md transition-colors ${
-                    pathname.startsWith(link.url)
-                      ? "text-black font-semibold"
-                      : "text-gray-700"
-                  }`}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+        {/* Desktop Navigation */}
+        <nav
+          className={styles.mainNav}
+          style={{
+            marginLeft: "auto",
+            gap: "20px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            href="/investments"
+            className={`${styles.navItem} ${
+              mounted && router.pathname === "/investments"
+                ? "font-semibold text-black"
+                : ""
+            }`}
+            style={{
+              fontSize: "11px",
+              letterSpacing: "1.5px",
+              color: "#444444",
+            }}
+          >
+            INVESTMENTS
+          </Link>
+          <Link
+            href="/team"
+            className={`${styles.navItem} ${
+              mounted && router.pathname === "/team"
+                ? "font-semibold text-black"
+                : ""
+            }`}
+            style={{
+              fontSize: "11px",
+              letterSpacing: "1.5px",
+              color: "#444444",
+            }}
+          >
+            TEAM
+          </Link>
+          <Link
+            href="/news"
+            className={`${styles.navItem} ${
+              mounted && router.pathname === "/news"
+                ? "font-semibold text-black"
+                : ""
+            }`}
+            style={{
+              fontSize: "11px",
+              letterSpacing: "1.5px",
+              color: "#444444",
+            }}
+          >
+            NEWS
+          </Link>
+          <Link
+            href="/contact"
+            className={`${styles.navItem} ${
+              mounted && router.pathname === "/contact"
+                ? "font-semibold text-black"
+                : ""
+            }`}
+            style={{
+              fontSize: "11px",
+              letterSpacing: "1.5px",
+              color: "#444444",
+            }}
+          >
+            CONTACT
+          </Link>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className={styles.mobileMenuButton}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <Image
+            src="/images/burger.svg"
+            alt="Menu"
+            width={24}
+            height={24}
+            className={styles.mobileMenuIcon}
+          />
+        </button>
+      </header>
+
+      {/* Mobile Navigation */}
+      <nav
+        className={`${styles.mobileNav} ${
+          mobileMenuOpen ? styles.mobileNavActive : ""
+        }`}
+        style={{
+          width: "calc(100% + 80px)",
+          marginLeft: "-40px",
+          paddingLeft: "40px",
+          paddingRight: "40px",
+        }}
+      >
+        <Link
+          href="/investments"
+          className={`${styles.mobileNavItem} ${
+            mounted && router.pathname === "/investments"
+              ? "font-semibold text-black"
+              : ""
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          INVESTMENTS
+        </Link>
+        <Link
+          href="/team"
+          className={`${styles.mobileNavItem} ${
+            mounted && router.pathname === "/team"
+              ? "font-semibold text-black"
+              : ""
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          TEAM
+        </Link>
+        <Link
+          href="/news"
+          className={`${styles.mobileNavItem} ${
+            mounted && router.pathname === "/news"
+              ? "font-semibold text-black"
+              : ""
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          NEWS
+        </Link>
+        <Link
+          href="/contact"
+          className={`${styles.mobileNavItem} ${
+            mounted && router.pathname === "/contact"
+              ? "font-semibold text-black"
+              : ""
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          CONTACT
+        </Link>
+      </nav>
+    </>
   );
 };
 

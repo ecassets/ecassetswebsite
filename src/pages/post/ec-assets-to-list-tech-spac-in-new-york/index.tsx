@@ -23,27 +23,32 @@ const Post = () => {
 
         {/* Hero Section */}
         <section className="relative w-full">
-          <div className="relative h-[500px] bg-gray-800">
-            <Image
-              src="/images/post/spac/hero.png"
-              alt="EC Assets to list $250 million Tech SPAC in New York"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="container mx-auto px-4 text-center text-white">
-                <h1 className="text-5xl font-light mb-4">
-                  EC Assets to list $250 million Tech SPAC in New York
-                </h1>
-                <p className="text-xl">FEBRUARY 27, 2021</p>
+          <div className="relative h-[500px] bg-gray-800 px-6">
+            <div className="absolute inset-x-6 inset-y-6 overflow-hidden">
+              <Image
+                src="/images/post/spac/hero.png"
+                alt="EC Assets to list $250 million Tech SPAC in New York"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <h1 className="text-5xl font-light mb-4">
+                    EC Assets to list $250 million Tech SPAC in New York
+                  </h1>
+                  <p className="text-xl">FEBRUARY 27, 2021</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <main className="container mx-auto px-4 py-12">
-          <div className="prose max-w-none">
+        <main className="container mx-auto py-12">
+          <div
+            className="prose max-w-none mx-auto px-4"
+            style={{ maxWidth: "calc(100% - 5rem)" }}
+          >
             <p className="text-xl mb-8">
               The Luxembourg-based team at EC Assets, led by Ludwig Klatzka, is
               currently preparing to list a SPAC in New York.

@@ -23,79 +23,49 @@ const Post = () => {
 
         {/* Hero Section */}
         <section className="relative w-full">
-          <div className="relative h-[500px] bg-gray-800">
-            <Image
-              src="/images/post/property/hero.png"
-              alt="EC Assets develops 61,500 sqm commercial property"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="container mx-auto px-4 text-center text-white">
-                <h1 className="text-5xl font-light mb-4">
-                  EC Assets develops 61,500 sqm commercial property
-                </h1>
-                <p className="text-xl">DECEMBER 22, 2020</p>
+          <div className="relative h-[500px] bg-gray-800 px-6">
+            <div className="absolute inset-x-6 inset-y-6 overflow-hidden">
+              <Image
+                src="/images/post/property/hero.png"
+                alt="EC Assets develops 61,500 sqm commercial property"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <h1 className="text-5xl font-light mb-4">
+                    EC Assets develops 61,500 sqm commercial property
+                  </h1>
+                  <p className="text-xl">DECEMBER 22, 2020</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <main className="container mx-auto px-4 py-12">
-          <div className="prose max-w-none">
+        <main className="container mx-auto py-12">
+          <div
+            className="prose max-w-none mx-auto px-4"
+            style={{ maxWidth: "calc(100% - 5rem)" }}
+          >
             <p className="text-xl mb-8">
-              EC Assets announces the start of the development of a commercial
-              property with approx. 61,500 sqm space right in the centre of the
-              economical powerhouse of Germany.
+              EC Assets has begun the development of a commercial property on
+              the important German highway A8. Right next to its own exit, it is
+              stratgically located on this very important connection to the
+              German economical powerhouse and its mayor hubs.
             </p>
 
             <p className="mb-8">
-              The prospectus and the development plans for this project are to
-              be filed with the local authorities before the end of March.
+              It is planned to build about 61.500 sqm. of production and
+              commercial space. The planned completion of the five buildings is
+              scheduled for end-2022.
             </p>
 
             <p className="mb-8">
-              EC Assets intends to invest a total of €180 million into this
-              project, with construction expected to begin in the third quarter
-              of 2021.
-            </p>
-
-            <p className="mb-8">
-              The period of development is expected to be completed by the end
-              of 2023.
-            </p>
-
-            <p className="mb-8">
-              With its expertise in commercial real estate, the team plans to
-              create a modern, sustainable office and retail space that meets
-              the highest environmental standards and caters to the needs of
-              forward-thinking companies.
-            </p>
-
-            <div className="my-12 p-8 border-l-4 border-[#8B0000]">
-              <p className="text-xl italic">
-                &ldquo;The German commercial real estate market offers extremely
-                attractive opportunities. This development represents our
-                commitment to creating sustainable, high-quality spaces in prime
-                locations across Europe.&rdquo;
-              </p>
-              <p className="mt-4 font-medium">
-                - Ludwig Klatzka, CEO of EC Assets
-              </p>
-            </div>
-
-            <p className="mb-8">
-              The project is expected to achieve LEED Platinum certification,
-              featuring cutting-edge energy efficiency systems, green spaces,
-              and amenities designed to enhance tenant wellbeing and
-              productivity.
-            </p>
-
-            <p className="mb-8">
-              EC Assets will be working with renowned architectural firm Meier &
-              Partners on this development, creating a landmark building that
-              will contribute to the urban landscape.
+              The properties are leased out on a long-term basis and will remain
+              in the industrial portfolio of EC Assets. In charge for the
+              project is the Munich team of EC Assets.
             </p>
 
             <div className="my-8">

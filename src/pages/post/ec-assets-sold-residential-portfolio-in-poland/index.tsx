@@ -23,41 +23,38 @@ const Post = () => {
 
         {/* Hero Section */}
         <section className="relative w-full">
-          <div className="relative h-[500px] bg-gray-800">
-            <Image
-              src="/images/post/poland/hero.png"
-              alt="EC Assets sold residential portfolio in Poland"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="container mx-auto px-4 text-center text-white">
-                <h1 className="text-5xl font-light mb-4">
-                  EC Assets sold residential portfolio in Poland
-                </h1>
-                <p className="text-xl">SEPTEMBER 28, 2020</p>
+          <div className="relative h-[500px] bg-gray-800 px-6">
+            <div className="absolute inset-x-6 inset-y-6 overflow-hidden">
+              <Image
+                src="/images/post/poland/hero.png"
+                alt="EC Assets sold residential portfolio in Poland"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <h1 className="text-5xl font-light mb-4">
+                    EC Assets sold residential portfolio in Poland
+                  </h1>
+                  <p className="text-xl">SEPTEMBER 28, 2020</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <main className="container mx-auto px-4 py-12">
-          <div className="prose max-w-none">
+        <main className="container mx-auto py-12">
+          <div
+            className="prose max-w-none mx-auto px-4"
+            style={{ maxWidth: "calc(100% - 5rem)" }}
+          >
             <p className="text-xl mb-8">
-              EC Assets has sold parts of its residential portfolio in the
-              Polish capital Warsaw as part of an asset deal.
-            </p>
-
-            <p className="mb-8">
               The properties sold in today&apos;s transaction are located in
-              highly sought-after locations in the Polish capital Warsaw.
-            </p>
-
-            <p className="mb-8">
-              Built in the two city districts of Wilanów and Mokotów amidst
-              their large green areas and many embassies, the buildings were
-              acquired and extensively refurbished over the past ten years.
+              highly sought-after locations in the Polish capital Warsaw. Built
+              in the two city districts of Wilanów and Mokotów amidst their
+              large green areas and many embassies, the buildings were acquired
+              and extensively refurbished over the past ten years.
             </p>
 
             <p className="mb-8">

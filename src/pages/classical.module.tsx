@@ -7,11 +7,17 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 export default function Classical() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Text style constants
+  const mainTextStyle =
+    "font-['Montserrat'] font-normal text-[11px] leading-[1.2] text-black";
+  const headerStyle =
+    "font-['Montserrat'] font-light text-[26px] leading-[36px] text-black";
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+  // Regular text styles for other sections
+  const regularMainTextStyle =
+    "font-['Montserrat'] font-normal text-base leading-relaxed text-black";
+  const regularHeaderStyle =
+    "font-['Montserrat'] font-light text-[36px] leading-[50px] text-black";
 
   return (
     <>
@@ -19,6 +25,10 @@ export default function Classical() {
         <title>EC Assets - Classical</title>
         <meta name="description" content="EC Assets - Classical investments" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       <div className={styles.pageContainer}>
@@ -68,8 +78,8 @@ export default function Classical() {
         <section className={styles.investmentSection}>
           <div className={styles.investmentContent} style={{ paddingLeft: 0 }}>
             <div className={styles.investmentLabel}>OUR INVESTMENTS</div>
-            <h2 className={styles.investmentTitle}>Real Estate</h2>
-            <p className={styles.investmentText}>
+            <h2 className={`${headerStyle}`}>Real Estate</h2>
+            <p className={`${mainTextStyle}`}>
               As a global real estate investor, we are seeking long-term and
               secure income in prime locations. We invest in high-quality
               assets, focusing where we see outsized growth potential driven by
@@ -105,8 +115,8 @@ export default function Classical() {
           </div>
           <div className={styles.investmentContent} style={{ paddingRight: 0 }}>
             <div className={styles.investmentLabel}>OUR INVESTMENTS</div>
-            <h2 className={styles.investmentTitle}>Private Equity</h2>
-            <p className={styles.investmentText}>
+            <h2 className={`${headerStyle}`}>Private Equity</h2>
+            <p className={`${mainTextStyle}`}>
               We are an equity investor seeking investments in founders with
               greatest visions, in applications that are truly mind-changing, in
               products that are really enabling to all of us, and companies that

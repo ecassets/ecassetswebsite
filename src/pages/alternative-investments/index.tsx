@@ -11,8 +11,8 @@ import {
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import AlternativeNavigation from "@/components/AlternativeNavigation";
-import Footer from "@/components/Footer";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
 
 const AlternativeInvestmentsPage = () => {
   const investmentCategories = [
@@ -85,7 +85,7 @@ const AlternativeInvestmentsPage = () => {
       </Head>
 
       <div className="min-h-screen bg-white">
-        <AlternativeNavigation />
+        <Navigation />
 
         {/* Hero Section */}
         <section className="relative">

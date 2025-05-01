@@ -21,43 +21,39 @@ const Post = () => {
 
         {/* Hero Section */}
         <section className="relative w-full">
-          <div className="relative h-[500px] bg-gray-800">
-            <Image
-              src="/images/post/sport/hero.png"
-              alt="EC Assets expands Sport Sponsoring"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="container mx-auto px-4 text-center text-white">
-                <h1 className="text-5xl font-light mb-4">
-                  EC Assets expands Sport Sponsoring
-                </h1>
-                <p className="text-xl">NOVEMBER 17, 2020</p>
+          <div className="relative h-[500px] bg-gray-800 px-6">
+            <div className="absolute inset-x-6 inset-y-6 overflow-hidden">
+              <Image
+                src="/images/post/sport/hero.png"
+                alt="EC Assets expands Sport Sponsoring"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <h1 className="text-5xl font-light mb-4">
+                    EC Assets expands Sport Sponsoring
+                  </h1>
+                  <p className="text-xl">NOVEMBER 17, 2020</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <main className="container mx-auto px-4 py-12">
-          <div className="prose max-w-none">
-            <p className="text-xl mb-8">
-              EC Assets expands its sports sponsoring further and supports
-              German tennis youth at the Baden performance base in Plankstadt.
-            </p>
-
+        <main className="container mx-auto py-12">
+          <div
+            className="prose max-w-none mx-auto px-4"
+            style={{ maxWidth: "calc(100% - 5rem)" }}
+          >
             <p className="text-xl mb-8">
               We at Team EC Assets are enthusiastic tennis fans and have been
               following the successful work of the Felix Dobler Tennis Academy
-              for many years.
-            </p>
-
-            <p className="mb-8">
-              Not only the high personal commitment of Felix and his team
-              impresses us again and again. Also, his professional approach to
-              train the tennis youth holistically and to promote talents at an
-              early stage are extraordinary.
+              for many years. Not only the high personal commitment of Felix and
+              his team impresses us again and again. Also, his professional
+              approach to train the tennis youth holistically and to promote
+              talents at an early stage are extraordinary.
             </p>
 
             <p className="mb-8">

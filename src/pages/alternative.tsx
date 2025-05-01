@@ -13,8 +13,8 @@ import {
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import AlternativeNavigation from "@/components/AlternativeNavigation";
-import Footer from "@/components/Footer";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 const AlternativeInvestments = () => {
   // Structured data for rich snippets
@@ -106,7 +106,7 @@ const AlternativeInvestments = () => {
       </Head>
 
       <div className="min-h-screen bg-white text-gray-900">
-        <AlternativeNavigation />
+        <Navigation />
 
         {/* Hero Section */}
         <section className="relative w-full">

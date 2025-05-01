@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 // Use classical styles
 import styles from "../../styles/classical.module.css";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,11 +13,6 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,102 +42,26 @@ const Contact = () => {
 
       {/* Use classical page container for padding */}
       <div className={styles.pageContainer}>
-        {/* Header from classical.tsx */}
-        <header className={styles.header}>
-          <Link href="/" className={styles.logo}>
-            <Image
-              src="/logo.png"
-              alt="EC Assets Logo"
-              width={160}
-              height={40}
-              priority
-            />
-          </Link>
-          <nav className={styles.mainNav}>
-            <Link href="/investments" className={styles.navItem}>
-              INVESTMENTS
-            </Link>
-            <Link href="/team" className={styles.navItem}>
-              TEAM
-            </Link>
-            <Link href="/news" className={styles.navItem}>
-              NEWS
-            </Link>
-            <Link
-              href="/contact"
-              className={`${styles.navItem} font-semibold text-black`}
-            >
-              {" "}
-              {/* Highlight */}
-              CONTACT
-            </Link>
-          </nav>
-          <button
-            className={styles.mobileMenuButton}
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            <Image
-              src="/images/burger.svg"
-              alt="Menu"
-              width={24}
-              height={24}
-              className={styles.mobileMenuIcon}
-            />
-          </button>
-        </header>
-
-        {/* Mobile Navigation from classical.tsx */}
-        <nav
-          className={`${styles.mobileNav} ${
-            mobileMenuOpen ? styles.mobileNavActive : ""
-          }`}
-        >
-          <Link
-            href="/investments"
-            className={styles.mobileNavItem}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            INVESTMENTS
-          </Link>
-          <Link
-            href="/team"
-            className={styles.mobileNavItem}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            TEAM
-          </Link>
-          <Link
-            href="/news"
-            className={styles.mobileNavItem}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            NEWS
-          </Link>
-          <Link
-            href="/contact"
-            className={`${styles.mobileNavItem} font-semibold text-black`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            CONTACT
-          </Link>
-        </nav>
+        {/* Use Navigation component */}
+        <Navigation />
 
         {/* Original Page Content - Wrapped in container for consistency */}
         <div className="container mx-auto py-10">
-          {/* Hero Section */}
-          <section className="relative w-full -mx-10 mb-10">
-            <div className="relative h-[400px]">
-              <Image
-                src="/photos/investments/heroinvestments.jpg" // Placeholder
-                alt="Professional conducting a business meeting"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <h1 className="text-6xl font-light text-white">Contact Us</h1>
+          {/* Hero Section - Standardized across pages */}
+          <section className="relative w-[calc(100%+80px)] left-[-40px] overflow-hidden -mt-[1px]">
+            <div className="mx-[40px] relative h-[360px]">
+              <div className="absolute inset-x-0 top-[5%] bottom-[5%] overflow-hidden border border-gray-200">
+                <Image
+                  src="/photos/investments/heroinvestments.jpg"
+                  alt="Professional conducting a business meeting"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <h1 className="text-6xl font-light text-white">Contact Us</h1>
+                </div>
               </div>
             </div>
           </section>
@@ -222,7 +143,7 @@ const Contact = () => {
                   <div>
                     <button
                       type="submit"
-                      className="w-full py-4 border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white uppercase tracking-wider text-sm transition-colors"
+                      className="w-full py-4 border border-[#403e3e] bg-[#403e3e] text-white hover:bg-white hover:text-[#8B1E20] hover:border-black uppercase tracking-wider text-sm transition-all duration-300 ease-in-out"
                     >
                       SUBMIT
                     </button>
@@ -326,76 +247,8 @@ const Contact = () => {
           </section>
         </div>
 
-        {/* Footer from classical.tsx - Made lighter grey */}
-        <footer
-          className={`bg-gray-500 text-white ${styles.footer} px-10 py-20`}
-        >
-          <div className={styles.footerRow}>
-            <div className={styles.footerColumn}>
-              <Link href="/" className={styles.footerLogo}>
-                ec assets
-              </Link>
-              <p className={styles.footerText}>Investing is our business.</p>
-            </div>
-
-            <div className={styles.footerColumn}>
-              <h3 className={styles.footerHeading}>Navigation</h3>
-              <Link href="/investments" className={styles.footerLink}>
-                Investments
-              </Link>
-              <Link href="/team" className={styles.footerLink}>
-                Team
-              </Link>
-              <Link href="/news" className={styles.footerLink}>
-                News
-              </Link>
-              <Link
-                href="/contact"
-                className={`${styles.footerLink} font-bold`}
-              >
-                {" "}
-                {/* Highlight */}
-                Contact
-              </Link>
-            </div>
-
-            <div className={styles.footerColumn}>
-              <h3 className={styles.footerHeading}>Contact</h3>
-              <a
-                href="mailto:office@ecassets.com"
-                className={styles.footerLink}
-              >
-                office@ecassets.com
-              </a>
-              <a href="tel:+442087980342" className={styles.footerLink}>
-                +44 20 8798 0342
-              </a>
-              <p className={styles.footerAddress}>
-                13 Savile Row
-                <br />
-                London W1S 3PH
-                <br />
-                United Kingdom
-              </p>
-            </div>
-          </div>
-
-          <div className={styles.footerBottom}>
-            <p>
-              Copyright © {new Date().getFullYear()} by ec assets. All rights
-              reserved.
-            </p>
-            <div>
-              <Link href="/legals" className={styles.footerBottomLink}>
-                Legals
-              </Link>
-              <span style={{ margin: "0 10px", color: "#777" }}>|</span>
-              <Link href="/data-privacy" className={styles.footerBottomLink}>
-                Data Privacy
-              </Link>
-            </div>
-          </div>
-        </footer>
+        {/* Use Footer component */}
+        <Footer />
       </div>
     </>
   );
