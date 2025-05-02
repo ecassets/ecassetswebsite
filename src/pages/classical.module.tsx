@@ -135,12 +135,14 @@ export default function Classical() {
           <div className={styles.newsHeading}>NEWS</div>
           <h2 className={styles.newsTitle}>Company News</h2>
 
-          <div className={styles.newsGrid}>
+          <div className={`${styles.newsGrid} grid-cols-3`}>
             <Link
               href="/post/ec-assets-to-list-tech-spac-in-new-york"
-              className={styles.newsCard}
+              className={`${styles.newsCard} hover:border-[#8B1E20] transition-all`}
             >
-              <h3 className={styles.newsCardTitle}>
+              <h3
+                className={`${styles.newsCardTitle} hover:text-[#8B1E20] transition-colors`}
+              >
                 EC Assets to list $250 million Tech SPAC in New York
               </h3>
               <hr className={styles.newsCardDivider} />
@@ -154,9 +156,11 @@ export default function Classical() {
 
             <Link
               href="/post/ec-assets-develops-property"
-              className={styles.newsCard}
+              className={`${styles.newsCard} hover:border-[#8B1E20] transition-all`}
             >
-              <h3 className={styles.newsCardTitle}>
+              <h3
+                className={`${styles.newsCardTitle} hover:text-[#8B1E20] transition-colors`}
+              >
                 EC Assets develops 61.500 sqm commercial property
               </h3>
               <hr className={styles.newsCardDivider} />
@@ -169,9 +173,11 @@ export default function Classical() {
 
             <Link
               href="/post/a-sector-ec-assets-invests-in-worktech"
-              className={styles.newsCard}
+              className={`${styles.newsCard} hover:border-[#8B1E20] transition-all`}
             >
-              <h3 className={styles.newsCardTitle}>
+              <h3
+                className={`${styles.newsCardTitle} hover:text-[#8B1E20] transition-colors`}
+              >
                 A sector EC Assets invests in: WorkTech
               </h3>
               <hr className={styles.newsCardDivider} />
